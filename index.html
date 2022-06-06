@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      #navbar{
+        width: 100%;
+        height: 80px;
+        border: 1px solid black;
+        display: flex;
+        justify-content:space-around;
+        margin-bottom: 20px;
+           }
+      form{
+        width:30%;
+        height: auto;
+        border:1px solid black;
+        background-color: blanchedalmond;
+        margin:auto;
+        padding-top: 10px;
+
+        
+      }
+      form>input{
+        width:80%;
+        height: 25px;
+        margin-bottom: 10px;
+        margin-left: 20px;
+      }
+      a{
+        margin-top: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <h3>Sign Up</h3>
+      <a href="voucher.html">Purchase Voucher</a>
+    </div>
+    <form id="form">
+<input type="text" id="name" placeholder="Enter Name">
+<input type="text" id="email" placeholder="Enter Mail">
+<input type="text" id="address" placeholder="address" >
+<input type="number" id="amount" placeholder="Amount">
+<input type="submit" id="submit" value="submit">
+
+    </form>
+    <!-- - name input box :- "name"
+  - email input box :- "email"
+  - Address input box :- "address"
+  - Amount input box :- "amount" 
+  - Submit button :- "submit"
+  - The user will be stored with key:- "user"
+  - The input fields should become empty after submitting -->
+  </body>
+</html>
+<script>
+
+let form= document.getElementById("form");
+form.addEventListener("submit",myfun);
+
+let user=JSON.parse(localStorage.getItem("user")) || [];
+console.log(user)
+function myfun()
+{
+  
+  let obj= {
+name:form.name.value,
+mail:form.email.value,
+add:form.address.value,
+amt:form.amount.value,
+  }
+  user.push(obj);
+localStorage.setItem("user",JSON.stringify(user))
+  
+}
+
+</script>
